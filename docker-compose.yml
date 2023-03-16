@@ -17,7 +17,7 @@
 #
 
 ---
-version: '3'
+version: '3.5'
 
 
 services:
@@ -28,15 +28,23 @@ services:
     ## * image: agaveapi/beanstalkd-console
     build: .
     ports:
-      - 80:80
+      - target: 80
+        published: 7777
+        protocol: tcp
     environment:
       - BEANSTALKD_HOST=beanstalkd
     links:
-      - beanstalkd
-  beanstalkd:
+      - srv_beanstalkd
+  srv_beanstalkd:
     image: dinamic/docker-alpine-beanstalkd
     volumes:
       - beanstalkd_data:/var/lib/beanstald
+    networks:
+      - itautomotive-network
 
 volumes:
   beanstalkd_data:
+
+networks:
+  itautomotive-network:
+    external: true
