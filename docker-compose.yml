@@ -32,7 +32,9 @@ services:
         published: 7777
         protocol: tcp
     environment:
-      - BEANSTALKD_HOST=beanstalkd
+      - BEANSTALKD_HOST=srv_beanstalkd
+    networks:
+      - itautomotive-network
     links:
       - srv_beanstalkd
   srv_beanstalkd:
