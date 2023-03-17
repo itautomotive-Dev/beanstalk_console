@@ -35,14 +35,14 @@ services:
       - BEANSTALKD_HOST=srv_beanstalkd
     networks:
       - itautomotive-network
-    links:
-      - srv_beanstalkd
-  srv_beanstalkd:
-    image: dinamic/docker-alpine-beanstalkd
-    volumes:
-      - beanstalkd_data:/var/lib/beanstald
-    networks:
-      - itautomotive-network
+#    links:
+#      - srv_beanstalkd
+#  srv_beanstalkd:
+#    image: dinamic/docker-alpine-beanstalkd
+#    volumes:
+#      - beanstalkd_data:/var/lib/beanstald
+#    networks:
+#      - itautomotive-network
 
 volumes:
   beanstalkd_data:
